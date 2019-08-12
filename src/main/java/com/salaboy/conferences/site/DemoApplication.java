@@ -29,20 +29,16 @@ class ConferenceSiteController {
 
         RestTemplate restTemplate = new RestTemplate();
         String conferenceAgenda = "http://conference-agenda";
-        String conferenceSponsors = "http://conference-sponsors";
         String agendaString = "N/A";
-        String sponsorsString = "N/A";
+        String sponsorsString = "Local SPONSORS HERE";
         try {
             ResponseEntity<String> agenda = restTemplate.getForEntity(conferenceAgenda, String.class);
             agendaString = agenda.getBody();
 
         } catch (Exception e) {
         }
-        try {
-            ResponseEntity<String> sponsors = restTemplate.getForEntity(conferenceSponsors, String.class);
-            sponsorsString = sponsors.getBody();
-        } catch (Exception e) {
-        }
+
+
 
         model.addAttribute("version", version);
         model.addAttribute("agenda", agendaString);
